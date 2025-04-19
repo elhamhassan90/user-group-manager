@@ -36,7 +36,7 @@ To get started with User-Group-Manager, follow the installation steps below.
 
 1. **Clone the repository**:
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/elhamhassan90/user-group-manager.git
     cd user-group-manager
     ```
 
@@ -69,55 +69,72 @@ cat logs/user-group-manager.log
 
 
 
-## Screenshots
+## 📸 Screenshots
 
-The following screenshots demonstrate the GUI interface of the User-Group-Manager script:
+### 1. Add User
+![Add User Screenshot](screenshots/1.png)
 
-1. **Main Menu**:
-   ![Main Menu Screenshot](screenshots/1.png)
+### 2. Delete User
+![Delete User Screenshot](screenshots/2.png)
 
-2. **Add User**:
-   ![Add User Screenshot](screenshots/2.png)
+### 3. Add Group
+![Add Group Screenshot](screenshots/3.png)
 
-3. **Delete User**:
-   ![Delete User Screenshot](screenshots/3.png)
+### 4. Add User to Group
+![Add User to Group Screenshot](screenshots/4.png)
 
-4. **Modify User**:
-   ![Modify User Screenshot](screenshots/4.png)
+### 5. Show User Info
+![Show User Info Screenshot](screenshots/5.png)
 
-5. **List Users**:
-   ![List Users Screenshot](screenshots/5.png)
+### 6. Show Group Info
+![Show Group Info Screenshot](screenshots/6.png)
 
-6. **List a User and Groups**:
-   ![List a User and All Groups Screenshot](screenshots/6.png)
+### 7. Backup and Restore
+![Backup and Restore Screenshot](screenshots/7.png)
 
-7. **Add & Modify a Group**:
-   ![Add & Modify a Group Screenshot](screenshots/7.png)
+### 8. Logs Menu
+![Logs Menu Screenshot](screenshots/8.png)
 
-8. **Enable & Disable a User**:
-   ![Enable & Disable a User Screenshot](screenshots/8.png)
+### 9. Delete Group
+![Delete Group Screenshot](screenshots/9.png)
 
-9. **Delete Group**:
-   ![Delete Group Screenshot](screenshots/9.png)
+### 10. Change Password
+![Change Password Screenshot](screenshots/10.png)
 
-10. **Change Password**:
-   ![Change Password Screenshot](screenshots/10.png)
+### 11. Exit
+![Exit Screenshot](screenshots/11.png)
 
-11. **Exit**:
-   ![Exit Screenshot](screenshots/11.png)
+### 12. Logs Operations File
+![Logs Screenshot](screenshots/12logs.png)
 
-12. **Logs Operations File**:
-   ![Logs Screenshot](screenshots/12logs.png)
+### 13. Demo Video of the Script
+📹 [Click to View Video](screenshots/usergroupmanager.asf)
 
-13. **Vido of Result**:
-    ![Showing Result Video](screenshots/usergroupmanager.asf)
+---
 
-## Summary
+## 📄 Summary
 
-User-Group-Manager is a powerful and interactive Bash script designed to simplify user and group management on Linux-based systems. By leveraging a friendly whiptail menu interface, it allows administrators to easily add, delete, and modify users and groups while logging every action for transparency and auditing. This tool is ideal for system management enthusiasts and professionals looking to streamline administrative tasks.
+**User-Group-Manager** is a powerful and interactive Bash script that simplifies user and group management on Linux systems using a user-friendly **Whiptail GUI**. It provides easy navigation to perform actions like adding, deleting, or modifying users and groups, with all activities logged for auditing and transparency.
 
-## Author Information
+✅ Ideal for:
+- Linux system administrators  
+- DevOps engineers  
+- Students & professionals learning Bash scripting
 
-- **Name:** Elham Hasan Gouda Tammam Kedwany
-- **LinkedIn:** [Your LinkedIn URL](https://www.linkedin.com/in/elham-hasan-6b029433a)
-- **GitHub:** [Your GitHub URL](https://github.com/elhamhassan90)
+🔧 Key Features:
+- Whiptail-driven GUI menu  
+- Logging every action  
+- User & Group backup/restore  
+- Lightweight & easy to integrate
+
+---
+
+## 👨‍💻 Author Information
+
+- **👤 Name:** Elham Hasan Gouda Tammam Kedwany  
+- **🔗 LinkedIn:** [linkedin.com/in/elham-hasan-6b029433a](https://www.linkedin.com/in/elham-hasan-6b029433a)  
+- **💻 GitHub:** [github.com/elhamhassan90](https://github.com/elhamhassan90)
+
+---
+
+

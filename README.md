@@ -69,6 +69,112 @@ cat logs/user-group-manager.log
 
 
 
+
+
+
+## 📸 Screenshots
+
+### 🔹 1. Main Menu:
+![Main Menu Screenshot](./screenshots/1.PNG)
+
+### 🔹 2. Add User:
+![Add User Screenshot](./screenshots/2.PNG)
+
+### 🔹 3. Delete User:
+![Delete User Screenshot](./screenshots/3.PNG)
+
+### 🔹 4. Modify User:
+![Modify User Screenshot](./screenshots/4.PNG)
+
+### 🔹 5. List Users:
+![List Users Screenshot](./screenshots/5.PNG)
+
+### 🔹 6. List a User and Groups:
+![List a User and All Groups Screenshot](./screenshots/6.PNG)
+
+### 🔹 7. Add & Modify a Group:
+![Add & Modify a Group Screenshot](./screenshots/7.PNG)
+
+### 🔹 8. Enable & Disable a User:
+![Enable & Disable a User Screenshot](./screenshots/8.PNG)
+
+### 🔹 9. Delete Group:
+![Delete Group Screenshot](./screenshots/9.PNG)
+
+### 🔹 10. Change Password:
+![Change Password Screenshot](./screenshots/10.PNG)
+
+### 🔹 11. Exit:
+![Exit Screenshot](./screenshots/11.PNG)
+
+### 🔹 12. Logs Operations File:
+![Logs Screenshot](./screenshots/12logs.PNG)
+
+### 🎬 13. Demo Video of the Script:
+[▶️ Click to View Demo Video](./screenshots/usergroupmanager.asf)
+
+---
+
+## 📄 Summary
+
+**User-Group-Manager** is a powerful and interactive Bash script that simplifies user and group management on Linux systems using a user-friendly **Whiptail GUI**. It enables administrators to:
+
+- Add / delete / modify users and groups  
+- Enable or disable users  
+- Log every action for auditing  
+- Backup and restore users and groups  
+
+💼 Great for:
+- System administrators  
+- DevOps engineers  
+- Students learning Bash scripting
+
+---
+
+## 👨‍💻 Author Information
+
+- **Name:** Elham Hasan Gouda Tammam Kedwany  
+- **🔗 LinkedIn:** [linkedin.com/in/elham-hasan-6b029433a](https://www.linkedin.com/in/elham-hasan-6b029433a)  
+- **💻 GitHub:** [github.com/elhamhassan90](https://github.com/elhamhassan90)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 📸 Screenshots
 
 ### 🔹1. Main Menu:

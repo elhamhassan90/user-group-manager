@@ -73,6 +73,7 @@ cat logs/user-group-manager.log
 
 
 ## 📸 Screenshots
+screenshots/12logs.PNG
 
 ### 🔹 1. Main Menu:
 ![Main Menu Screenshot](./screenshots/1.PNG)

@@ -75,6 +75,7 @@ cat logs/user-group-manager.log
 ## 📸 Screenshots
 ./screenshots/12logs.PNG
 
+(./screenshots/main.png)
 
 ## 📷 Included Screenshots
 ## 📷 Screenshots

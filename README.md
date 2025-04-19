@@ -1,10 +1,10 @@
 # 🖥️  User-Group-Manager
 
-## Project Overview
+## 🗺️  Project Overview
 
 User-Group-Manager is a Bash-based script designed for managing users and groups on a Linux-based system. It utilizes an easy-to-use menu interface powered by `whiptail` for interactive user management tasks. The project includes features such as adding, deleting, modifying users and groups, as well as enabling/disabling accounts, all while logging actions for auditing.
 
-## Features
+## 🔑 Features
 
 - **Add User**: Add a new user to the system.
 - **Delete User**: Remove an existing user and their home directory.
@@ -22,8 +22,8 @@ User-Group-Manager is a Bash-based script designed for managing users and groups
 
 ---
 
-## Project Structure
-
+## 🗂️  Project Structure
+```
 user-group-manager/
 ├── menu              # 📜 Main script to launch the interactive menu
 ├── functions         # 🧠 Core functions for user/group management
@@ -32,18 +32,10 @@ user-group-manager/
 ├── screenshots/      # 📸 Directory for storing screenshots used in README
 └── README.md         # 📄 Project documentation
 
+```
 ---
 
-user-group-manager/
-├── menu              # Main script to launch the interactive menu
-├── functions         # Contains all the core functions for user/group management
-├── install           # Script to install necessary dependencies
-├── logs/             # Directory for storing log files
-├── screenshots/      # Directory for storing screenshots for documentation
-└── README.md         # Project documentation
-
-
-## Installation
+## ⚙️  Installation
 
 To get started with User-Group-Manager, follow the installation steps below.
 
@@ -60,7 +52,7 @@ To get started with User-Group-Manager, follow the installation steps below.
 
 This will install all the necessary dependencies and ensure the script works properly on your system.
 
-## Usage
+## 🚀 Usage
 
 Once the installation is complete, you can execute the script as follows:
 
@@ -71,7 +63,7 @@ Once the installation is complete, you can execute the script as follows:
 
 2. The script will present a menu with various options for managing users and groups.
 
-## Logging
+## 🧾 Logging
 
 All actions performed using the script will be logged to the `logs/` directory for auditing purposes. Each log entry includes details about the action taken, such as the username/group, timestamp, and the action performed (e.g., user added, user deleted, etc.).
 

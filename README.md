@@ -71,10 +71,11 @@ cat logs/user-group-manager.log
 
 ## 📸 Screenshots
 
-1. **Main Menu**:
+### 🔹1. Main Menu:
    ![Main Menu Screenshot](./screenshots/1.PNG)
 
-2. **Add User**:
+### 🔹
+2. Add User:
    ![Add User Screenshot](./screenshots/2.PNG)
 
 3. **Delete User**:

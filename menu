@@ -1,0 +1,56 @@
+#!/bin/bash
+resize -s 40 130 >/dev/null 2>&1
+
+
+PS3=$'\n\033[1;36mPlease select an option:\033[0m '
+
+source functions
+
+# === Main Fancy Menu ===
+while true; do
+    CHOICE=$(whiptail --title "🚀 Admin Panel - User & Group Manager" \
+        --backtitle "												🔧 Bash Project | by Elham Hasan System Admin and DevOps" \
+	--menu "Choose an action:" 40 120 20 \
+       "1" "➕ Add User" \
+        "2" "🗑️ Delete User" \
+        "3" "✏️ Modify User" \
+        "4" "📋 List All Users" \
+        "5" "👤 View Specific User" \
+        "6" "➕ Add Group" \
+        "7" "✏️ Modify Group" \
+        "8" "📋 List Groups" \
+        "9" "✅ Enable User" \
+        "10" "🚫 Disable User" \
+        "11" "🗑️ Delete Group" \
+        "12" "🔒 Change Password" \
+        "13" "❌ Exit" 3>&1 1>&2 2>&3)
+
+    exitstatus=$?
+   if [ $exitstatus != 0 ]; then
+    	 whiptail --title "👋 Exit" --msgbox "Operation cancelled. Goodbye!" 10 50
+    	sleep 1
+    	clear
+    	exit
+    fi
+
+
+    case $CHOICE in
+        1) AddUser ;;
+        2) DeleteUser ;;
+        3) ModifyUser ;;
+        4) ListUsers ;;
+        5) ListUser ;;
+        6) AddGroup ;;
+        7) ModifyGroup ;;
+        8) ListGroups ;;
+        9) EnableUser ;;
+        10) DisableUser ;;
+        11) DeleteGroup ;;
+        12) ChangePassword ;;
+        13)
+            whiptail --title "👋 Exit" --msgbox "Thank you for using this tool. See you soon!" 10 50
+            exit ;;
+        *)
+            whiptail --title "⚠️ Invalid" --msgbox "Unknown option selected!" 10 50 ;;
+    esac
+done

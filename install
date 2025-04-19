@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Installing required tools..."
+sudo yum update -y
+sudo yum install -y whiptail

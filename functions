@@ -1,0 +1,265 @@
+LOG_DIR="$(dirname "$0")/logs"
+LOG_FILE="$LOG_DIR/user_group_management.log"
+
+#making sure if dir of logs exists 
+mkdir -p "$LOG_DIR"
+
+# Function to add a new user
+AddUser() {
+    while true; do
+        read -p "Enter new username: " username
+
+        # Check if user already exists
+        if id "$username" &>/dev/null; then
+            echo "⚠️  Username '$username' already exists. Please choose another."
+            echo "$(date) - Attempted to add existing user '$username'" >> $LOG_FILE
+        else
+            break
+        fi
+    done
+
+    read -s -p "Enter password: " password
+    echo
+
+    # Create user
+    sudo useradd "$username"
+    echo "$username:$password" | sudo chpasswd
+
+    echo "✅ User '$username' created successfully."
+    echo "$(date) - Added user '$username'" >> $LOG_FILE
+}
+
+# Function to delete an existing user
+DeleteUser() {
+    read -p "Enter the username to delete: " username
+
+    # Check if the user exists
+    if id "$username" &>/dev/null; then
+        # Confirm before deletion
+        read -p "Are you sure you want to delete user '$username'? [y/N]: " confirm
+        if [[ "$confirm" == [yY] ]]; then
+            sudo userdel -r "$username"
+            echo "✅ User '$username' has been deleted (home directory removed too)."
+            echo "$(date) - Deleted user '$username'" >> $LOG_FILE
+        else
+            echo "❌ Deletion cancelled."
+            echo "$(date) - Deletion of user '$username' cancelled" >> $LOG_FILE
+        fi
+    else
+        echo "⚠️  User '$username' does NOT exist on this system."
+        echo "$(date) - Attempted to delete non-existing user '$username'" >> $LOG_FILE
+    fi
+}
+
+# Function to modify an existing user
+ModifyUser() {
+    read -p "Enter the existing username to modify: " old_user
+
+    # Check if user exists
+    if id "$old_user" &>/dev/null; then
+        read -p "Enter the new username: " new_user
+
+        # Modify the username
+        sudo usermod -l "$new_user" "$old_user"
+        echo "✅ Username changed from '$old_user' to '$new_user'."
+        echo "$(date) - Changed username from '$old_user' to '$new_user'" >> $LOG_FILE
+    else
+        echo "⚠️  User '$old_user' does NOT exist on this system."
+        echo "$(date) - Attempted to modify non-existing user '$old_user'" >> $LOG_FILE
+    fi
+}
+
+# Function to list all normal users on the system
+ListUsers() {
+    echo "🧑💻 List of all normal users on this system:"
+    awk -F: '$3 >= 1000 && $3 < 60000 {print $1}' /etc/passwd
+    echo "$(date) - Listed all normal users" >> $LOG_FILE
+}
+
+# Function to list user details
+ListUser() {
+    read -p "Enter the username to list details: " username
+
+    if id "$username" &>/dev/null; then
+        echo "🔍 User details for '$username':"
+        echo "---------------------------------"
+        id "$username"
+        getent passwd "$username"
+        echo "📁 Home directory: $(eval echo ~$username)"
+        echo "💻 Shell: $(getent passwd "$username" | cut -d: -f7)"
+        echo "$(date) - Listed details for user '$username'" >> $LOG_FILE
+    else
+        echo "❌ User '$username' does not exist on this system."
+        echo "$(date) - Attempted to list details for non-existing user '$username'" >> $LOG_FILE
+    fi
+}
+
+# Function to add a new group
+AddGroup() {
+    read -p "🧑‍🤝‍🧑 Enter the group name to add: " groupname
+
+    # Check if group already exists
+    if getent group "$groupname" > /dev/null; then
+        echo "❌ Group '$groupname' already exists."
+        echo "$(date) - Attempted to add existing group '$groupname'" >> $LOG_FILE
+    else
+        sudo groupadd "$groupname"
+        echo "✅ Group '$groupname' added successfully."
+        echo "$(date) - Added group '$groupname'" >> $LOG_FILE
+    fi
+}
+
+# Function to modify a group
+ModifyGroup() {
+    read -p "🧑‍🤝‍🧑 Enter the group name you want to modify: " groupname
+
+    if ! getent group "$groupname" > /dev/null; then
+        echo "❌ Group '$groupname' does not exist."
+        echo "$(date) - Attempted to modify non-existing group '$groupname'" >> $LOG_FILE
+        exit 1
+    fi
+
+    echo "1) Add user to group"
+    echo "2) Remove user from group"
+    read -p "Choose an option [1 or 2]: " option
+
+    read -p "👤 Enter the username: " username
+
+    if ! id "$username" &> /dev/null; then
+        echo "❌ User '$username' does not exist."
+        echo "$(date) - Attempted to modify group for non-existing user '$username'" >> $LOG_FILE
+        exit 1
+    fi
+
+    if [ "$option" == "1" ]; then
+        if id -nG "$username" | grep -qw "$groupname"; then
+            echo "⚠️ User '$username' is already a member of '$groupname'."
+        else
+            sudo usermod -aG "$groupname" "$username"
+            echo "✅ User '$username' added to group '$groupname'."
+            echo "$(date) - Added user '$username' to group '$groupname'" >> $LOG_FILE
+        fi
+    elif [ "$option" == "2" ]; then
+        current_groups=$(id -nG "$username" | sed "s/\b$groupname\b//g" | xargs)
+        sudo usermod -G "$current_groups" "$username"
+        echo "✅ User '$username' removed from group '$groupname'."
+        echo "$(date) - Removed user '$username' from group '$groupname'" >> $LOG_FILE
+    else
+        echo "❌ Invalid option selected."
+        echo "$(date) - Invalid option selected for modifying group '$groupname'" >> $LOG_FILE
+    fi
+}
+
+# Function to list all groups on the system
+ListGroups() {
+    echo -e "\n🔍 All Groups:"
+    getent group | cut -d: -f1 | sort
+    echo "$(date) - Listed all groups" >> $LOG_FILE
+}
+
+# Function to enable a locked user account
+EnableUser() {
+    read -p "Enter the username to enable: " username
+
+    if id "$username" &>/dev/null; then
+        status=$(sudo passwd -S "$username" | awk '{print $2}')
+
+        if [ "$status" == "L" ]; then
+            sudo usermod -U "$username"
+            if [ $? -eq 0 ]; then
+                echo "✅ User '$username' has been enabled (unlocked) successfully."
+                echo "$(date) - Enabled user '$username'" >> $LOG_FILE
+            else
+                echo "❌ Failed to enable user '$username'."
+                echo "$(date) - Failed to enable user '$username'" >> $LOG_FILE
+            fi
+        else
+            echo "ℹ️  User '$username' is already enabled (not locked)."
+            echo "$(date) - Attempted to enable already enabled user '$username'" >> $LOG_FILE
+        fi
+    else
+        echo "⚠️  User '$username' does not exist on the system."
+        echo "$(date) - Attempted to enable non-existing user '$username'" >> $LOG_FILE
+    fi
+}
+
+# Function to disable a user account
+DisableUser() {
+    read -p "Enter the username to disable: " username
+
+    if id "$username" &>/dev/null; then
+        status=$(sudo passwd -S "$username" | awk '{print $2}')
+
+        if [ "$status" == "L" ]; then
+            echo "ℹ️  User '$username' is already disabled (locked)."
+        else
+            sudo usermod -L "$username"
+            if [ $? -eq 0 ]; then
+                echo "✅ User '$username' has been disabled (locked) successfully."
+                echo "$(date) - Disabled user '$username'" >> $LOG_FILE
+            else
+                echo "❌ Failed to disable user '$username'."
+                echo "$(date) - Failed to disable user '$username'" >> $LOG_FILE
+            fi
+        fi
+    else
+        echo "⚠️  User '$username' does not exist on the system."
+        echo "$(date) - Attempted to disable non-existing user '$username'" >> $LOG_FILE
+    fi
+}
+
+# Function to delete a group
+DeleteGroup() {
+    read -p "Enter the group name to delete: " groupname
+
+    if getent group "$groupname" >/dev/null; then
+        sudo groupdel "$groupname"
+        if [ $? -eq 0 ]; then
+            echo "✅ Group '$groupname' has been deleted successfully."
+            echo "$(date) - Deleted group '$groupname'" >> $LOG_FILE
+        else
+            echo "❌ Failed to delete group '$groupname'."
+            echo "$(date) - Failed to delete group '$groupname'" >> $LOG_FILE
+        fi
+    else
+        echo "⚠️  Group '$groupname' does not exist."
+        echo "$(date) - Attempted to delete non-existing group '$groupname'" >> $LOG_FILE
+    fi
+}
+
+# Function to change a user's password
+ChangePassword() {
+    read -p "Enter the username to change password: " username
+
+    if id "$username" &>/dev/null; then
+        echo "✅ User '$username' exists."
+
+        read -s -p "Enter new password: " new_pass
+        echo
+        read -s -p "Confirm new password: " confirm_pass
+        echo
+
+        if [ "$new_pass" == "$confirm_pass" ]; then
+            echo "$username:$new_pass" | sudo chpasswd
+            if [ $? -eq 0 ]; then
+                echo "🔒 Password for user '$username' changed successfully."
+                echo "$(date) - Changed password for user '$username'" >> $LOG_FILE
+            else
+                echo "❌ Failed to change password."
+                echo "$(date) - Failed to change password for user '$username'" >> $LOG_FILE
+            fi
+        else
+            echo "⚠️  Passwords do not match."
+            echo "$(date) - Passwords did not match for user '$username'" >> $LOG_FILE
+        fi
+    else
+        echo "❌ User '$username' does not exist on this system."
+        echo "$(date) - Attempted to change password for non-existing user '$username'" >> $LOG_FILE
+    fi
+}
+
+# Function to exit the script
+Exit() {
+    exit 0
+}
+

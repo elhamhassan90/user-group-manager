@@ -73,8 +73,13 @@ cat logs/user-group-manager.log
 
 
 ## 📸 Screenshots
-screenshots/12logs.PNG
+./screenshots/12logs.PNG
 
+
+## 📷 Included Screenshots
+## 📷 Screenshots
+### 🔹 NGINX Reverse Proxy in AZ1 serving Apache content from Private EC2
+![NGINX Proxy1](./screenshots/1.PNG)
 ### 🔹 1. Main Menu:
 ![Main Menu Screenshot](./screenshots/1.PNG)
 

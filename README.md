@@ -71,41 +71,41 @@ cat logs/user-group-manager.log
 
 ## 📸 Screenshots
 
-### 1. Add User
-![Add User Screenshot](./screenshots/1.png)
+1. **Main Menu**:
+   ![Main Menu Screenshot](./screenshots/1.PNG)
 
-### 2. Delete User
-![Delete User Screenshot](./screenshots/2.png)
+2. **Add User**:
+   ![Add User Screenshot](./screenshots/2.PNG)
 
-### 3. Add Group
-![Add Group Screenshot](./screenshots/3.png)
+3. **Delete User**:
+   ![Delete User Screenshot](./screenshots/3.PNG)
 
-### 4. Add User to Group
-![Add User to Group Screenshot](./screenshots/4.png)
+4. **Modify User**:
+   ![Modify User Screenshot](./screenshots/4.PNG)
 
-### 5. Show User Info
-![Show User Info Screenshot](./screenshots/5.png)
+5. **List Users**:
+   ![List Users Screenshot](./screenshots/5.PNG)
 
-### 6. Show Group Info
-![Show Group Info Screenshot](./screenshots/6.png)
+6. **List a User and Groups**:
+   ![List a User and All Groups Screenshot](./screenshots/6.PNG)
 
-### 7. Backup and Restore
-![Backup and Restore Screenshot](./screenshots/7.png)
+7. **Add & Modify a Group**:
+   ![Add & Modify a Group Screenshot](./screenshots/7.PNG)
 
-### 8. Logs Menu
-![Logs Menu Screenshot](./screenshots/8.png)
+8. **Enable & Disable a User**:
+   ![Enable & Disable a User Screenshot](./screenshots/8.PNG)
 
-### 9. Delete Group
-![Delete Group Screenshot](./screenshots/9.png)
+9. **Delete Group**:
+   ![Delete Group Screenshot](./screenshots/9.PNG)
 
-### 10. Change Password
-![Change Password Screenshot](./screenshots/10.png)
+10. **Change Password**:
+   ![Change Password Screenshot](./screenshots/10.PNG)
 
-### 11. Exit
-![Exit Screenshot](./screenshots/11.png)
+11. **Exit**:
+   ![Exit Screenshot](./screenshots/11.PNG)
 
-### 12. Logs Operations File
-![Logs Screenshot](./screenshots/12logs.png)
+12. **Logs Operations File**:
+   ![Logs Screenshot](./screenshots/12logs.PNG)
 
 ### 13. Demo Video of the Script
 📹 [Click to View Video](./screenshots/usergroupmanager.asf)

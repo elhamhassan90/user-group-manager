@@ -66,8 +66,7 @@ Logs can be viewed using the following command:
 
 ```bash
 cat logs/user-group-manager.log
-
-
+```
 
 
 

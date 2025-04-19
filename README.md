@@ -126,7 +126,7 @@ cat logs/user-group-manager.log
 ![Logs Screenshot](./screenshots/12logs.PNG)
 
 ### 🎬 13. Demo Video of the Script:
-[▶️ Click to View Demo Video](./screenshots/usergroupmanager.zip)
+[▶️ Click to View Demo Video](./screenshots/usergroupmanager.rar)
 
 ---
 
